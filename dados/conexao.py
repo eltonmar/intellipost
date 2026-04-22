@@ -14,7 +14,6 @@ def getConexao():
         )
         return conn
 
-
 def getConexaoE():
         conn = pyodbc.connect(
             f"DRIVER={{ODBC Driver 17 for SQL Server}};"

@@ -4,6 +4,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+#ATUALIZAR O MAIN PARA CONSEGUIR ATUALIZAR OS DADOS NO BANCO
+
+#PRECISA ALTERAR A QUERY DEPOIS
 
 def consultar(order_id):
     url = f"https://api.intelipost.com.br/api/v1/shipment_order/{order_id}"
