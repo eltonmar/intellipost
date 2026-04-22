@@ -1,13 +1,10 @@
 
 from services.intellipost import consultar_pedido
-
-orders = [
-    '0110050004495625',
-    'ANY324072532',
-    'SLR-1623852461974-01'
-]
+from dados.consulta import buscar_orders
 
 def main():
+    orders = buscar_orders()
+
     resultados = consultar_pedido(orders)
 
     for pedido in resultados:
