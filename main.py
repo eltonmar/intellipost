@@ -1,6 +1,6 @@
 
 
-from intellipost import consultar_pedido
+from services.intellipost import consultar_pedido
 
 orders = [
     '0110050004495625',
