@@ -1,10 +1,10 @@
 
-
 from services.intellipost import consultar_pedido
 
 orders = [
     '0110050004495625',
-    'ANY324072532'
+    'ANY324072532',
+    'SLR-1623852461974-01'
 ]
 
 def main():
