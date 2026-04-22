@@ -14,3 +14,13 @@ def getConexao():
         )
         return conn
 
+
+def getConexaoE():
+        conn = pyodbc.connect(
+            f"DRIVER={{ODBC Driver 17 for SQL Server}};"
+            f"SERVER={os.getenv('DB_SERVER_EXCEL')},{os.getenv('DB_PORT_EXCEL')};"
+            f"DATABASE={os.getenv('DB_DATABASE_EXCEL')};"
+            f"UID={os.getenv('DB_USER_EXCEL')};"
+            f"PWD={os.getenv('DB_PASSWORD_EXCEL')}"
+        )
+        return conn

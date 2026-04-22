@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 def consultar(order_id):
     url = f"https://api.intelipost.com.br/api/v1/shipment_order/{order_id}"
 
@@ -21,6 +22,7 @@ def consultar(order_id):
     volume = volumes[0] if volumes else {}
 
     pedido = {
+        "status_code":response.status_code,
         "estimated_delivery": content.get("estimated_delivery_date_lp_iso"),
         "delivered_at": content.get("delivered_date_iso"),
         "status": content.get("shipment_order_volume_state")
@@ -33,6 +35,7 @@ def consultar(order_id):
     pedido["invoice_key"] = invoice.get("invoice_key")
 
     return pedido
+
 
 def consultar_pedido(orders):
     resultados = []

@@ -5,7 +5,7 @@ def buscar_orders ():
     cursor = conn.cursor()
 
     query = ("""
-             SELECT
+             SELECT TOP 10
 	            CASE 
 		            WHEN L1_XNUMECO = '' THEN CONCAT(RTRIM(L1_FILIAL),RTRIM(L1_DOC))
 		            ELSE RTRIM(L1_XNUMECO) 
@@ -18,7 +18,7 @@ def buscar_orders ():
              )
     cursor.execute(query)
 
-    orders =  [row[0] for row in cursor.fetchall()]
+    orders = [row[0] for row in cursor.fetchall()]
 
     cursor.close()
     conn.close()
