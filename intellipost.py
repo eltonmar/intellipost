@@ -4,13 +4,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-orders = [
-    '0110050004495625',
-    'ANY324072532'
-]
-
-for order in orders:
-    url = f"https://api.intelipost.com.br/api/v1/shipment_order/{order}"
+def consultar(order_id):
+    url = f"https://api.intelipost.com.br/api/v1/shipment_order/{order_id}"
 
     headers = {
         "api-key": os.getenv("API_KEY"),
@@ -18,12 +13,9 @@ for order in orders:
     }
 
     response = requests.get(url, headers=headers)
-    print(response.status_code)
-    print(f"{url}")
 
     data = response.json()
     content = data.get("content", {})
-
 
     volumes = content.get("shipment_order_volume_array", [])
     volume = volumes[0] if volumes else {}
@@ -40,8 +32,13 @@ for order in orders:
     pedido["invoice_series"] = invoice.get("invoice_series")
     pedido["invoice_key"] = invoice.get("invoice_key")
 
-    print('-' * 50)
+    return pedido
 
-    print("\n📦 Pedido normalizado:\n")
-    for k, v in pedido.items():
-        print(f"{k}: {v}")
+def consultar_pedido(orders):
+    resultados = []
+
+    for order in orders:
+        resultado = consultar(order)
+        resultados.append(resultado)
+
+    return resultados
